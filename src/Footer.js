@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <div>
-            <h2>@ copyright 2023</h2>
+            <h2 className='bg-success text-center'>@ copyright 2023</h2>
         </div>
     );
 };

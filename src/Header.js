@@ -20,8 +20,8 @@ const Navber = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Courses</Nav.Link>
-            <Nav.Link href="#pricing">FAQ</Nav.Link>
+            <Nav.Link><Link to='/Course'>Courses</Link></Nav.Link>
+            <Nav.Link><Link>FAQ</Link></Nav.Link>
             <Nav.Link ><Link to='/Blog'>Blog</Link></Nav.Link>
             
           </Nav>
