@@ -1,14 +1,17 @@
 import React from 'react';
-
+import {FcGoogle } from 'react-icons/fc';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import app from './firebase/firebas.config';
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from "firebase/auth";
 import { toast } from 'react-toastify';
 
 const auth = getAuth(app);
 
 const Login = () => {
+ const googleProvider = new GoogleAuthProvider()
+
+
 const handleRegister = event=>{
   event.preventDefault();
   const name = event.target.name.value;
@@ -24,7 +27,7 @@ const handleRegister = event=>{
       displayName:name,
     })
     .then(()=>{
-      toast.success('name uploded')
+      toast.success('thanks')
       console.log(auth.currentUser.displayName)
 
       // email varification
@@ -32,7 +35,7 @@ const handleRegister = event=>{
         toast.success('please check  you email ')
       })
     .catch(error=>{
-      toast.error(error.message)
+      toast.error(error.massage)
      })
     })
 
@@ -40,7 +43,11 @@ const handleRegister = event=>{
   })
   .catch(error=>console.log(error))
 }
-
+const googleSubmit = () =>{
+  signInWithPopup(auth,googleProvider).then(result=>{
+    console.log(result.user)
+  })
+}
   return (
     <div className='w-50 mx-auto mt-5 mb-5 '>
       <Form onSubmit={handleRegister} className=''>
@@ -66,9 +73,7 @@ const handleRegister = event=>{
         Register
       </Button>
     </Form>
-    <div>
-    <Button></Button>
-    </div>
+    <p ><FcGoogle onClick={googleSubmit}></FcGoogle></p>
     </div>
     
   );
