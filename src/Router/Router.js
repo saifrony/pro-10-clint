@@ -3,6 +3,7 @@ import Blog from "../component/Blog";
 import Courses from "../component/Courses";
 import Main from "../layout/Main";
 import Login from "../Login";
+import Catagory from "../component/Catagory";
 
 
 export const routers = createBrowserRouter([
@@ -23,6 +24,11 @@ export const routers = createBrowserRouter([
                 path:'/Blog',
                 element:<Blog></Blog>
                         
+            },
+            {
+                path:'/Course/:id',
+                element:<Catagory></Catagory>,
+                loader:({params})=>fetch(`http://localhost:5000/Course/${params.id}`)
             }
         ]
         

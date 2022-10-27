@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 
 const Courses = () => {
@@ -12,12 +13,16 @@ const Courses = () => {
             .then(data=>setCatagory(data));
     },[])
     return (
-        <div className='d-flex'>
-            <div>
-            <h2>hooo{catagories.length}</h2>
+        <div>
+              <h2 className=' bg-success  text-center'>All course  {catagories.length}</h2>
+        <div className='d-flex '>
+          
+            <div className='bg- w-50 ps-5'>
+            
             {
                 catagories.map(course=><p key={course.id}>
-                    <Link to={`/course/$course.id`}>{course.name}</Link>
+                   <p><Link to={`/course/$course.id`}>{course.name}</Link></p> 
+                    <img src={course.img} alt=''></img>
                 </p>)
 
             }
@@ -26,10 +31,12 @@ const Courses = () => {
         
         {
                 catagories.map(course=><p key={course.id}>
-                    <Link>src={course.img}</Link>
+                    <img src={course.img} alt=''/>
+                    <p>{course.Details}</p>
                 </p>)
 
             }
+        </div>
         </div>
         </div>
     );
