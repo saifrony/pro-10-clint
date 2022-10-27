@@ -32,7 +32,7 @@ const Navber = () => {
           <Nav>
             <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+              <Link to='login'>login</Link>
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

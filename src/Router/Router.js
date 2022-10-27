@@ -4,6 +4,7 @@ import Courses from "../component/Courses";
 import Main from "../layout/Main";
 import Login from "../Login";
 import Catagory from "../component/Catagory";
+import Logout from "../Logout";
 
 
 export const routers = createBrowserRouter([
@@ -25,6 +26,11 @@ export const routers = createBrowserRouter([
                 element:<Blog></Blog>
                         
             },
+            {
+                path:'/login',
+                element:<Logout></Logout>
+            },
+
             {
                 path:'/Course/:id',
                 element:<Catagory></Catagory>,

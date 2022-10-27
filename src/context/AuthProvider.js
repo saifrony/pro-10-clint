@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
@@ -31,7 +31,10 @@ const varifyEmail = () =>{
 const signInWithGoogle=()=>{
    return signInWithPopup(auth,googleProvider)
 }
-  
+//   5.githab
+// const singInWithGithab=()=>{
+    // return 
+// }
 
     const authInfo = {user,createUser,updateName,varifyEmail,signInWithGoogle}
 
