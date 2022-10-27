@@ -17,7 +17,7 @@ const Courses = () => {
               <h2 className=' bg-success  text-center'>All course  {catagories.length}</h2>
         <div className='d-flex '>
           
-            <div className='bg- w-50 ps-5'>
+            <div className='w-50 ps-5 mt-4'>
             
             {
                 catagories.map(course=><p key={course.id}>
@@ -27,11 +27,12 @@ const Courses = () => {
 
             }
         </div>
-        <div>
+        <div className=' bg-red'>
         
         {
                 catagories.map(course=><p key={course.id}>
                     <img src={course.img} alt=''/>
+                    <p>{course.name}</p>
                     <p>{course.Details}</p>
                 </p>)
 

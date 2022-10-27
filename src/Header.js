@@ -1,12 +1,16 @@
 import React from 'react';
+import { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 import { Link } from 'react-router-dom';
 import img1 from './assin/1.png'
+import { AuthContext } from './context/AuthProvider';
+
 
 const Navber = () => {
+  const {user}=useContext(AuthContext)
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -26,7 +30,7 @@ const Navber = () => {
             
           </Nav>
           <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
+            <Nav.Link href="#deets">{user?.displayName}</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Dank memes
             </Nav.Link>
