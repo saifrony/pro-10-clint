@@ -1,4 +1,7 @@
-
+import React from 'react';
+import {FcGoogle } from 'react-icons/fc';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 const Logout = () => {
   
@@ -24,7 +27,7 @@ const Logout = () => {
         Register
       </Button>
     </Form>
-    <p ><FcGoogle onClick={googleSubmit}></FcGoogle></p>
+    <p ><FcGoogle ></FcGoogle></p>
     </div>
     
   );

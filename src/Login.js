@@ -8,7 +8,7 @@ import { AuthContext } from './context/AuthProvider';
 
 
 const Login = () => {
-  const{createUser,updateName, varifyEmail, signInWithGoogle} = useContext(AuthContext)
+  const{createUser,updateName, signInWithGoogle} = useContext(AuthContext)
  
 
 
@@ -29,9 +29,9 @@ const handleRegister = event=>{
       
 
       // email varification
-      varifyEmail(Auth,createUser).then( ()=>{
-        toast.success('please check  you email ')
-      })
+      // varifyEmail(auth.createUser).then( ()=>{
+      //   toast.success('please check  you email ')
+      // })
     .catch(error=>{
       toast.error(error.massage)
      })
