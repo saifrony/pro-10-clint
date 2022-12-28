@@ -2,19 +2,20 @@ import { createBrowserRouter } from "react-router-dom";
 import Blog from "../component/Blog";
 import Courses from "../component/Courses";
 import Main from "../layout/Main";
+import Ragister from "../Ragister";
+import Error from "../component/Error";
 import Login from "../Login";
-
-import Logout from "../Logout";
 
 
 export const routers = createBrowserRouter([
     {
         path:'/',
         element:<Main></Main>,
+        errorElement:<Error></Error>,
         children:[
             {
                 path:'/',
-                element:<Login></Login>
+                element:<Ragister></Ragister>
             },
             {
                 path:'/Course',
@@ -22,13 +23,13 @@ export const routers = createBrowserRouter([
 
             },
             {
-                path:'/Blog',
+                path:'/Faq',
                 element:<Blog></Blog>
                         
             },
             {
                 path:'/login',
-                element:<Logout></Logout>
+                element:<Login></Login>
             },
 
             {

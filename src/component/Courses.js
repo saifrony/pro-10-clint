@@ -3,12 +3,15 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 import { Link } from 'react-router-dom';
+// import Catagory from './Catagory';
+
 
 const Courses = () => {
     const [catagories,setCatagory]=useState([]);
 
     useEffect(()=>{
-            fetch('http://localhost:5000/course')
+            //  fetch('https://course-iota.vercel.app/course')
+            fetch('https://servers-sooty.vercel.app/course')
             .then(res=>res.json())
             .then(data=>setCatagory(data));
     },[])
@@ -22,18 +25,22 @@ const Courses = () => {
             {
                 catagories.map(course=><p key={course.id}>
                    <p><Link to={`/course/$course.id`}>{course.name}</Link></p> 
-                    <img src={course.img} alt=''></img>
+                   
                 </p>)
 
             }
         </div>
-        <div className=' bg-red'>
+        <div className=''>
+            {/* <Catagory></Catagory> */}
         
         {
-                catagories.map(course=><p key={course.id}>
-                    <img src={course.img} alt=''/>
-                    <p>{course.name}</p>
+                catagories.map(course=><p key={course.id} course={course}>
+                   
+                    <img src={course.img} alt='' style={{ width: '18rem' }}/>
+                    <h3>{course.name}</h3>
                     <p>{course.Details}</p>
+                    <button variant="primary">More</button>
+                   
                 </p>)
 
             }

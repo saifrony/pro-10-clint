@@ -1,42 +1,55 @@
-import { createUserWithEmailAndPassword, getAuth, GithubAuthProvider, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile } from 'firebase/auth';
 import React from 'react';
 import { useState } from 'react';
 import { createContext } from 'react';
-import app from '../firebase/firebas.config'
+import app from '../firebase/firebas.config';
+import{createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth';
+import { useEffect } from 'react';
 
 
-const auth = getAuth(app);
 
 
-export const AuthContext = createContext();
 
+const auth=getAuth(app);
+
+
+
+export const AuthContext =createContext();        
+  
 
 const AuthProvider = ({children}) => {
-    const googleProvider = new GoogleAuthProvider()
-    const [user,setUser]= useState({})
-    
-    // create user
-    const createUser = (email,password)=>{
-        return createUserWithEmailAndPassword(auth,email,password)
-    }
-    // 2. updatename
-    const updateName = (name)=>{
-        return updateProfile(auth,createUser,{displayName:name})
-    }
-// email
-const varifyEmail = () =>{
-    return sendEmailVerification(auth.currentUser)
-}
-// 4.google
-const signInWithGoogle=()=>{
-   return signInWithPopup(auth,googleProvider)
-}
-//   5.githab
-// const singInWithGithab=()=>{
-    // return 
-// }
+   const [user,setUser]= useState({displayName:"Ron"});
 
-    const authInfo = {user,createUser,updateName,varifyEmail,signInWithGoogle}
+//    const googleProvider = new GoogleAuthProvider();
+
+   const createUser = (email, password)=>{
+    return createUserWithEmailAndPassword(auth,email,password);
+   }
+
+   const signIn = (email, password)=>{
+    return signInWithEmailAndPassword(auth, email,password);
+   }
+
+   const signInWithGoogle = () =>{
+    const googleProvider = new GoogleAuthProvider();
+    return signInWithPopup(auth, googleProvider);
+};
+
+   const logOut=() =>{
+    return signOut(auth);
+   }
+   
+
+   useEffect(()=>{
+      const unsubscribe=  onAuthStateChanged(auth, currentuser=>{
+            setUser(currentuser);
+            console.log('auth changed',currentuser)
+        })
+        return()=>{
+            unsubscribe();
+        }
+   },[])
+  
+    const authInfo = {user,createUser,signIn,logOut,signInWithGoogle}
 
     return (
         
