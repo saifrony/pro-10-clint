@@ -27,13 +27,14 @@ const Navber = () => {
       <Container>
         <Navbar.Brand>
           <img src={img1} alt='' className='me-2'/>
-          <Link to="/">
+          
            R-Programing
-           </Link>
+           
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
+            <Nav.Link><Link to='/Home'>Home</Link></Nav.Link>
             <Nav.Link><Link to='/Course'>Courses</Link></Nav.Link>
             <Nav.Link><Link>BLOG</Link></Nav.Link>
             <Nav.Link ><Link to='/Faq'>FAQ</Link></Nav.Link>
@@ -41,9 +42,14 @@ const Navber = () => {
           </Nav>
           <Nav>
 
-            <Nav.Link>Welcome, {user?.email?<button className='btn btn-primary' onClick={handleOut}>Log Out</button>:
+            <Nav.Link>{user?.email && <span>Welcome, {user.email}</span>} 
+            {
+              user?.email?
+              <button className='btn btn-primary' onClick={handleOut}> Log Out</button>
+              :
             <Link to='/login'>Login</Link>
-            }</Nav.Link>
+             }
+            </Nav.Link>
             
             <Nav.Link eventKey={2} href="#memes">
               {/* <Link to='login'>login</Link> */}

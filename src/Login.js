@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { FaGoogle,FaTwitter,FaGithub } from 'react-icons/fa'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from './context/AuthProvider';
 
 const Login = () => {
 
-  const{signIn}=useContext(AuthContext);
+  const{signIn,signInWithGoogle}=useContext(AuthContext);
+  const navigate = useNavigate();
   
   const handleSubmit = event=>{
     event.preventDefault();
@@ -19,11 +22,19 @@ const Login = () => {
     .then(result=>{
       const user = result.user;
       console.log('login user',user)
-    form.reset()
+      form.reset();
+      navigate('/')
+
     })
     .catch(error=>{
       console.error(error);
     })
+    }
+    const handleGoogleBtn=()=>{
+      signInWithGoogle()
+      .then(result=>{
+        console.log(result.user)
+      })
     }
 
  
@@ -46,7 +57,13 @@ const Login = () => {
         Login
       </Button>
     </Form>
-    
+    <div className='text-center'>
+    <p>Signup with social accounts</p>
+    <button onClick={handleGoogleBtn}  className='btn btn-outline text-primary mt-2 me-2'><FaGoogle/></button>
+    <button  className='btn btn-outline text-primary mt-2 me-2'><FaTwitter/></button>
+    <button  className='btn btn-outline text-primary mt-2 me-2'><FaGithub/></button>
+    </div>
+    <p className='text-center'><small>Don't have an account yet?</small><Link to='/ragister'>Sign up</Link>.</p>
     </div>
     
   );

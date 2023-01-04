@@ -1,9 +1,10 @@
 import React from 'react';
-
+import { FaGoogle,FaTwitter,FaGithub } from 'react-icons/fa'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useContext } from 'react';
 import { AuthContext } from './context/AuthProvider';
+import { Link } from 'react-router-dom';
 
 
 
@@ -79,7 +80,13 @@ const handleRegister = event=>{
         Register
       </Button>
     </Form>
-    <button onClick={ handleGoogle} className='btn btn-outline btn-success mt-2'>Google</button>
+    <div className='text-center'>
+    <p>Signup with social accounts</p>
+    <button onClick={ handleGoogle} className='btn btn-outline text-primary mt-2 me-2'><FaGoogle/></button>
+    <button  className='btn btn-outline text-primary mt-2 me-2'><FaTwitter/></button>
+    <button  className='btn btn-outline text-primary mt-2 me-2'><FaGithub/></button>
+    </div>
+    <p className='text-center'><small>Already have an account yet? </small><Link to='/login'>Sign In</Link>.</p>
     </div>
     
   );

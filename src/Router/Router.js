@@ -5,6 +5,8 @@ import Main from "../layout/Main";
 import Ragister from "../Ragister";
 import Error from "../component/Error";
 import Login from "../Login";
+import Home from "../component/Home";
+import PrivateRoad from "../road/PrivateRoad";
 
 
 export const routers = createBrowserRouter([
@@ -14,12 +16,12 @@ export const routers = createBrowserRouter([
         errorElement:<Error></Error>,
         children:[
             {
-                path:'/',
-                element:<Ragister></Ragister>
+                path:'/Home',
+                element:<Home></Home>
             },
             {
                 path:'/Course',
-                element:<Courses></Courses>
+                element:<PrivateRoad><Courses></Courses></PrivateRoad>
 
             },
             {
@@ -30,6 +32,10 @@ export const routers = createBrowserRouter([
             {
                 path:'/login',
                 element:<Login></Login>
+            },
+            {
+                path:'/ragister',
+                element:<Ragister></Ragister>
             },
 
             {
