@@ -23,7 +23,7 @@ const Login = () => {
       const user = result.user;
       console.log('login user',user)
       form.reset();
-      navigate('/')
+      navigate('/Home')
 
     })
     .catch(error=>{
